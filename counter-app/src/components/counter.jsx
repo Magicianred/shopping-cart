@@ -35,7 +35,7 @@ class Counter extends Component {
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         {/* in the curly brackets we should write plain js object */}
         <button onClick= {this.doHandleIncrement} className="btn btn-info btn-sm">Increment</button>
-        <button onDelete= {this.doHandleDelete} className="btn btn-danger btn-sm ml-2">Delete</button>
+        <button onClick= {this.props.handleDelete} className="btn btn-danger btn-sm ml-2">Delete</button>
 
         {/* <ul>
           <li>
@@ -81,21 +81,6 @@ class Counter extends Component {
 
   }
 
-  //Helper Methods :
-  
-  handleDelete = (product) =>{
-    console.log(product);
-  // this.state.count++; not accepted in react
-     this.setState({value:this.state.value-1});
-      
-    }
-    
-  doHandleDelete = ( ) =>{
-    this.handleDelete({id:1});
-
-  }
-
-  
 
 
 }
