@@ -6,7 +6,7 @@ class Counter extends Component {
   //Component class from react module. Counter is a child to Component, it
   //means that Counter has his parent's features as well as his own features.
   state = {
-    value: this.props.value,
+    val: this.props.value,
     // tags: ["tag1", "tag2", "tag3"]
   };//state (a plain javascript object) is Counter assests.
 
@@ -35,7 +35,7 @@ class Counter extends Component {
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         {/* in the curly brackets we should write plain js object */}
         <button onClick= {this.doHandleIncrement} className="btn btn-info btn-sm">Increment</button>
-        <button onClick= {this.props.handleDelete} className="btn btn-danger btn-sm ml-2">Delete</button>
+        <button onClick= {this.doHandleDelete} className="btn btn-danger btn-sm ml-2">Delete</button>
 
         {/* <ul>
           <li>
@@ -49,7 +49,7 @@ class Counter extends Component {
   //Helper Methods :
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    if (this.state.value === 0) {
+    if (this.state.val === 0 || this.state.val < 0) {
       classes += "warning";
     } else {
       classes += "primary";
@@ -59,20 +59,27 @@ class Counter extends Component {
   //Helper Methods :
 
   formatCount() {
-    let { value } = this.state; //Object Distructuring _(this.state.value)
-    if (value === 0) {
+    let { val } = this.state; //Object Distructuring _(this.state.val)
+    if (val === 0 || val<0) {
       return "Zero";
       // return <h1>Zero</h1>; //JSX Expression
     } else {
-      return value;
+      return val;
     }
   }
-  //Helper Methods :
+  //Helper Methods for Events (onClick) :
+// -------------Increment--------------
 
   handleIncrement = (product) =>{
     console.log(product);
   // this.state.count++; not accepted in react
-  this.setState({value:this.state.value+1});
+  if ({val:this.state.val}<0) {
+    this.setState({val:this.state.val*1});
+    
+  }
+
+  this.setState({val:this.state.val+1});
+  
 
   }
 
@@ -80,7 +87,23 @@ class Counter extends Component {
     this.handleIncrement({id:1});
 
   }
+// -------------Delete--------------
 
+  handleDelete = (product) =>{
+    console.log(product);
+  // this.state.count++; not accepted in react
+  if({val:this.state.val}<0){
+    this.formatCount();
+    }
+    else{
+      this.setState({val:this.state.val-1});
+    }
+
+  }
+
+  doHandleDelete = ()=> {
+    this.handleDelete({id:0});
+  }
 
 
 }
