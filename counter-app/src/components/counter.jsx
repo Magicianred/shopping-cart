@@ -36,7 +36,7 @@ class Counter extends Component {
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         {/* in the curly brackets we should write plain js object */}
         <button onClick= {this.handleIncrement} className="btn btn-success btn-sm">+</button> 
-        <button onClick= {this.doHandleDecrement} className="btn btn-warning btn-sm ml-2">-</button>
+        <button onClick= {this.handleDecrement} className="btn btn-warning btn-sm ml-2">-</button>
         <button onClick= {()=>{this.props.onDelete(this.props.id)}} className="btn btn-danger btn-sm ml-2">Remove</button>
         {/* <ul>
           <li>
@@ -91,9 +91,8 @@ class Counter extends Component {
   // }
 // -------------Decrement(-)--------------
 
-  handleDecrement = (product) =>{
-    console.log(product);
-  // this.state.count++; not accepted in react
+  handleDecrement = () =>{
+  // this.state.count--; not accepted in react
   if({val:this.state.val}<0){
     this.formatCount();
     }
@@ -103,9 +102,7 @@ class Counter extends Component {
 
   }
 
-  doHandleDecrement = ()=> {
-    this.handleDecrement({id:0});
-  }
+ 
 
 }
 
