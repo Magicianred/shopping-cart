@@ -6,18 +6,18 @@ import Counters from "./components/counters";
 
 
 class App extends Component {
-  state = {  }
+
   render() { 
     return (
-      <div>
+      <React.Fragment>
         <NavBar/>
         <main className="container">
           <Counters/>
         </main>
-       
-      </div>
+      </React.Fragment>
     );
   }
+  
 }
  
 export default App;
