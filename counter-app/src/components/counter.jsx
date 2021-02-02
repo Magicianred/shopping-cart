@@ -1,12 +1,13 @@
 //counter.jsx contains components. We work here most of the time.
 import React, { Component } from "react";
+
 // -------------------------------------------
 // My first component :
 class Counter extends Component {
   //Component class from react module. Counter is a child to Component, it
   //means that Counter has his parent's features as well as his own features.
   state = {
-    val: this.props.value,
+    val: this.props.value
     // tags: ["tag1", "tag2", "tag3"]
   };//state (a plain javascript object) is Counter assests.
 
