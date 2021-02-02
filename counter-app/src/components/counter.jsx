@@ -34,9 +34,9 @@ class Counter extends Component {
         {/* <h2>counter # {this.props.id}</h2> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         {/* in the curly brackets we should write plain js object */}
-        <button onClick= {this.doHandleIncrement} className="btn btn-info btn-sm">+</button> 
-        <button onClick= {this.doHandleDecrement} className="btn btn-danger btn-sm ml-2">-</button>
-
+        <button onClick= {this.handleIncrement} className="btn btn-success btn-sm">+</button> 
+        <button onClick= {this.doHandleDecrement} className="btn btn-warning btn-sm ml-2">-</button>
+        <button onClick= {()=>{this.props.onDelete(this.props.id)}} className="btn btn-danger btn-sm ml-2">Remove</button>
         {/* <ul>
           <li>
             {this.state.tags.map(tag => <li>{tag}</li>)}
@@ -50,7 +50,7 @@ class Counter extends Component {
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
     if (this.state.val === 0 || this.state.val < 0) {
-      classes += "warning";
+      classes += "default";
     } else {
       classes += "primary";
     }
@@ -67,12 +67,13 @@ class Counter extends Component {
       return val;
     }
   }
-  //Helper Methods for Events (onClick) :
-// -------------Increment--------------
+  //Helper Methods for Events (onClick) aka *Event Handler*
+// -------------Increment(+)--------------
 
-  handleIncrement = (product) =>{
-    console.log(product);
-  // this.state.count++; not accepted in react
+  handleIncrement = () =>{
+    
+  // this.state.count++; not accepted in react whereas "this.setState({val:this.state.val+1});"
+  // is accepted
   if ({val:this.state.val}<0) {
     this.setState({val:this.state.val*0});
     
@@ -83,11 +84,11 @@ class Counter extends Component {
 
   }
 
-  doHandleIncrement = ( ) =>{
-    this.handleIncrement({id:1});
+  // doHandleIncrement = ( ) =>{
+  //   this.handleIncrement({id:1});
 
-  }
-// -------------Delete--------------
+  // }
+// -------------Decrement(-)--------------
 
   handleDecrement = (product) =>{
     console.log(product);
@@ -104,7 +105,6 @@ class Counter extends Component {
   doHandleDecrement = ()=> {
     this.handleDecrement({id:0});
   }
-
 
 }
 
