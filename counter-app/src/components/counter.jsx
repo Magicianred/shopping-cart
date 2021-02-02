@@ -34,8 +34,8 @@ class Counter extends Component {
         {/* <h2>counter # {this.props.id}</h2> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         {/* in the curly brackets we should write plain js object */}
-        <button onClick= {this.doHandleIncrement} className="btn btn-info btn-sm">Increment</button>
-        <button onClick= {this.doHandleDelete} className="btn btn-danger btn-sm ml-2">Delete</button>
+        <button onClick= {this.doHandleIncrement} className="btn btn-info btn-sm">+</button> 
+        <button onClick= {this.doHandleDecrement} className="btn btn-danger btn-sm ml-2">-</button>
 
         {/* <ul>
           <li>
@@ -74,7 +74,7 @@ class Counter extends Component {
     console.log(product);
   // this.state.count++; not accepted in react
   if ({val:this.state.val}<0) {
-    this.setState({val:this.state.val*1});
+    this.setState({val:this.state.val*0});
     
   }
 
@@ -89,7 +89,7 @@ class Counter extends Component {
   }
 // -------------Delete--------------
 
-  handleDelete = (product) =>{
+  handleDecrement = (product) =>{
     console.log(product);
   // this.state.count++; not accepted in react
   if({val:this.state.val}<0){
@@ -101,8 +101,8 @@ class Counter extends Component {
 
   }
 
-  doHandleDelete = ()=> {
-    this.handleDelete({id:0});
+  doHandleDecrement = ()=> {
+    this.handleDecrement({id:0});
   }
 
 
