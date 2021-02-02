@@ -10,7 +10,6 @@ class Counters extends Component {
       { id: 4, value: 0 },
     ],
   };
- 
 
   render() {
     return (
@@ -23,7 +22,7 @@ class Counters extends Component {
               padding: "20px",
             }}
           >
-            <Counter key={counter.id}  value={counter.value} id={counter.id}>
+            <Counter key={counter.id}  value={counter.value} id={counter.id} onDelete ={this.handleDelete}>
               {/* Counter has these props as well as his own state */}
                 {/* <h3>Title</h3> */}
             </Counter>
@@ -39,6 +38,13 @@ class Counters extends Component {
       // </div>
     );
   }
+
+
+  handleDelete = (counterId) => {
+    const newCounter = this.state.counters.filter(c => c.id !==counterId);
+    this.setState({counters:newCounter});
+  }
+  
 }
 
 export default Counters;
